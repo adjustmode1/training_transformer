@@ -55,7 +55,6 @@ def main(_A: argparse.Namespace):
         # Get the current device (this will be zero here by default).
         device = torch.cuda.current_device()
     _C = Config(_A.config, _A.config_override)
-    print(_A)
 
     tokenizer = TokenizerFactory.from_config(_C)
 
