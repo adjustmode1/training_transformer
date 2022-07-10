@@ -21,7 +21,12 @@ parser = common_parser(
     evaluate pretrained model on COCO Captions val2017 split."""
 )
 parser.add_argument(
-    "--images", "--data-root", default=None,
+    "--images", default=None,
+    help="""Path to a directory containing image files to generate captions for.
+    Default: COCO val2017 image directory as expected relative to project root."""
+)
+parser.add_argument(
+    "--data-root", default=None,
     help="""Path to a directory containing image files to generate captions for.
     Default: COCO val2017 image directory as expected relative to project root."""
 )
@@ -49,8 +54,8 @@ def main(_A: argparse.Namespace):
     else:
         # Get the current device (this will be zero here by default).
         device = torch.cuda.current_device()
-
     _C = Config(_A.config, _A.config_override)
+    print(_A)
 
     tokenizer = TokenizerFactory.from_config(_C)
 
