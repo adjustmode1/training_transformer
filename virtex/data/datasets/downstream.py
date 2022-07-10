@@ -222,9 +222,12 @@ class ImageDirectoryDataset(Dataset):
 
     def __getitem__(self, idx: int):
         image_path = self.image_paths[idx]
+        print("image_path log: ",image_path)
+        print("log idx: ",idx)
+        print("log index: ",self.image_paths[0])
         # Remove extension from image name to use as image_id.
         image_id = os.path.splitext(os.path.basename(image_path))[0]
-
+        print("image_log: ",image_path)
         # Open image from path and apply transformation, convert to CHW format.
         image = cv2.imread(image_path)
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
